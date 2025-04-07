@@ -7,6 +7,8 @@ from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 import random
+from flask_cors import CORS
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 def get_db_connection():
     return psycopg2.connect(
         host="localhost",
@@ -53,7 +55,7 @@ def get_predicted_data():
             "status": "error",
             "message": str(e)
         }), 500
-app=Flask(__name__)
+
 # === Load model and scaler ===
 model = load_model("weather_model.keras")
 scaler = joblib.load("scaler.pkl")

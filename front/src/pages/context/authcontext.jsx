@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 import React from "react";
+import { NavLink } from "react-router-dom";
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
@@ -41,6 +42,7 @@ const [isAuth, setIsAuth] = useState(false);
 
   const logout = () => {
     setCurrentUser(null);
+    <NavLink to="/login"/>
     setIsAuth(false);
     Cookies.remove("user"); // Remove user cookie on logout
     localStorage.removeItem("user"); // Clear localStorage on logout

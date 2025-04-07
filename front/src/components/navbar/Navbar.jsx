@@ -95,7 +95,7 @@ const Navbar = () => {
                         <button onClick={logout} className="text-white cursor-pointer bg-red-600 p-2 m-2 rounded-2xl">logout</button>
 
                     )}
-                    {}
+                   
 
                     <p className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-3xl">{currentUser.username?currentUser.username:"Guest"}</p>
                 </div>

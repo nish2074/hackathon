@@ -20,8 +20,16 @@ const BarChart = ({ value }) => {
 
   // 🔹 Extract timestamps and temperature values
   const labels = value.map((entry) => entry.timestamp);
-  const temperatureValues = value.map((entry) => entry.temperature);
-  const humidityValues = value.map((entry) => entry.humidity);
+  const temperatureValues = value.map((entry) => {
+    const tempStr = entry.temperature;
+    return typeof tempStr === "string" ? parseFloat(tempStr.replace("°C", "")) : tempStr;
+  });
+  
+  const humidityValues = value.map((entry) => {
+    const humStr = entry.humidity;
+    return typeof humStr === "string" ? parseFloat(humStr.replace("%", "")) : humStr;
+  })
+  
 
   // 🔹 Define data for the Bar chart
   const data = {
