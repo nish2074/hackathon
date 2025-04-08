@@ -1,5 +1,7 @@
 .login {
-    height: 100vh;
+    height: 100vh; background: url('../../components/navbar/bg-image/Gemini_Generated_Image_fu5sqwfu5sqwfu5s.jpg') no-repeat center center ;
+    background-size: cover;
+    
     background-color: rgb(193, 190, 255);
     display: flex;
     align-items: center;
@@ -8,15 +10,18 @@
     .card {
       width: 50%;
       display: flex;
-      background-color: white;
-      border-radius: 10px;
+      
+      background-color: rgba(248, 250, 246, 0.6);       border-radius: 10px;
       min-height: 600px;
       overflow: hidden;
+      
+      backdrop-filter:blur(4px);
+
   
       .left {
         flex: 1;
-        background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-          url("https://www.deccanchronicle.com/h-upload/2024/07/02/1101036-grxyw2nwsaaasmv.webp")
+        background: linear-gradient(rgba(252, 250, 255, 0.5), rgba(229, 227, 233, 0.5)),
+          url("../../components/navbar/logo/LOGO.png")
             center;
         background-size: cover;
         padding: 50px;
@@ -24,10 +29,20 @@
         flex-direction: column;
         gap: 30px;
         color: white;
+        
+          backdrop-filter: blur(4px);
+          background-color: rgba(239, 236, 244, 0.9); // semi-transparent overlay
+        
   
         h1 {
           font-size: 100px;
           line-height: 100px;
+          text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+          font-size: 100px;
+          line-height: 100px;
+          font-size: clamp(40px, 8vw, 100px);
+  line-height: 1.1;
+
         }
         
        
@@ -56,6 +71,7 @@
   
         h1 {
         color: #555;
+      font-size: 40px;line-height: 50px;
         }
         
         form {
@@ -67,6 +83,7 @@
           border: none;
           border-bottom: 1px solid lightgray;
           padding: 20px 10px;
+          background-color: transparent;
           }
           
           button {

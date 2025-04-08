@@ -34,14 +34,9 @@ const Register = () => {
     <div className="register">
       <div className="card">
         <div className="left">
-          <h1>Wc winning Captain</h1>
-          <p>
-          Spray Smart
-          </p>
-          <span>Do you have an account?</span>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
+          
+         
+          
         </div>
         <div className="right">
           <h1>Register</h1>
@@ -68,6 +63,10 @@ const Register = () => {
             {err && <p style={{ color: "red" }}>{typeof err === "string" ? err : err.error || JSON.stringify(err)}</p>}
             <button type="submit">Register</button>
             {success && <p>Successfully registered</p>}
+            <span>Do you have an account?</span>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
           </form>
         </div>
       </div>

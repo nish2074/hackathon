@@ -40,23 +40,21 @@ const handleLogin = async (e) => {
     <div className="login">
       <div className="card">
         <div className="left">
-          <h1>Hello World.</h1>
-          <p>
-           hey my teamamtes are u me and myswql
-          </p>
-          <span>Don't you have an account?</span>
-          <Link to="/register">
-            <button>Register</button>
-          </Link>
+         
         </div>
         <div className="right">
-          <h1>Login</h1>
+          <h1 className="">Login</h1>
           <form>
             <input type="text" name="username"  placeholder="Username"onChange={handleChange} />
             <input type="password" name="password" placeholder="Password"onChange={handleChange} />
             <button onClick={handleLogin}>Login</button>
             </form>
             {!success&&<p>Wrong Password</p>}
+           
+          <span>Don't you have an account?</span>
+          <Link to="/register">
+            <button className="cursor-pointer">Register</button>
+          </Link>
         </div>
       </div> 
     </div>

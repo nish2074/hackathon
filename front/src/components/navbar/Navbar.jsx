@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { FaBars, FaSearch, FaHome, FaBell, FaUserCircle, FaCogs, FaChartLine } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { AuthContext} from "../../pages/context/authcontext";
-
+import logo from './logo/LOGO.png';
 
 const Navbar = () => {
     const [show, setShow] = useState(true);
@@ -70,7 +70,9 @@ const Navbar = () => {
                 {/* Left section */}
                 <div className="flex items-center">
                     <FaBars onClick={handleClick} className="text-white cursor-pointer text-2xl mr-4" />
-                    <span className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-3xl">AGRO-MINDS</span>
+                    <img src={logo} className="rounded w-14 h-14 m-2" />
+                    <span className=" = bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-3xl">AGRO-MINDS</span>
+                        
                 </div>
 
                 {/* Right section */}
