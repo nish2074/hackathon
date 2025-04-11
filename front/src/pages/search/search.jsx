@@ -84,7 +84,7 @@ const Predict = () => {
   }, [predictedData]);
   const sixHourData = formattedData.slice(0, 6);
   return (
-    <div className="flex min-h-screen bg-gray-200 pl-64 p-8">
+    <div className="flex min-h-screen bg-gray-400 pl-64 p-8">
       <div className="flex flex-col w-full gap-8">
         <Dashboard />
 
@@ -203,27 +203,33 @@ const Predict = () => {
   <div className="bg-white p-4 rounded-lg shadow-md text-center w-1/3">
     <h3 className="text-lg font-semibold text-green-700">Ideal Conditions</h3>
     <p className="text-3xl font-bold">{conditionSummary.ideal.count}</p>
-    <p className="text-sm mt-2 text-gray-500">
-      {conditionSummary.ideal.times.join(", ")}
-    </p>
+    <div className="text-sm mt-2 text-gray-500 h-32 overflow-y-auto">
+  {conditionSummary.ideal.times.map((time, index) => (
+    <p className="text-2xl" key={index}>{time}</p>
+  ))}
+</div>
   </div>
 
   {/* Marginal */}
   <div className="bg-white p-4 rounded-lg shadow-md text-center w-1/3">
     <h3 className="text-lg font-semibold text-yellow-600">Marginal Conditions</h3>
     <p className="text-3xl font-bold">{conditionSummary.marginal.count}</p>
-    <p className="text-sm mt-2 text-gray-500">
-      {conditionSummary.marginal.times.join(", ")}
-    </p>
+    <div className="text-sm mt-2 text-gray-500 h-32 overflow-y-auto">
+  {conditionSummary.marginal.times.map((time, index) => (
+    <p className="text-2xl" key={index}>{time}</p>
+  ))}
+</div>
   </div>
 
   {/* Non-Ideal */}
   <div className="bg-white p-4 rounded-lg shadow-md text-center w-1/3">
     <h3 className="text-lg font-semibold text-red-600">Non-Ideal Conditions</h3>
     <p className="text-3xl font-bold">{conditionSummary.nonIdeal.count}</p>
-    <p className="text-sm mt-2 text-gray-500">
-      {conditionSummary.nonIdeal.times.join(", ")}
-    </p>
+    <div className="text-sm mt-2 text-gray-500 h-32 overflow-y-auto">
+  {conditionSummary.nonIdeal.times.map((time, index) => (
+    <p className="text-2xl " key={index}>{time}</p>
+  ))}
+</div>
   </div>
 </div>
     </div>

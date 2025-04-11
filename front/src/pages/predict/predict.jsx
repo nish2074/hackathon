@@ -116,26 +116,8 @@ const [className,setClassName]=useState(null);
  
 
   {/* Temperature Gauge */}
-  <div className="flex w-full justify-center items-center gap-6 mt-6">
-  {/* Temperature Gauge */}
-  {selectedData && selectedData.length > 0 && (
-    <div className="flex flex-col items-center justify-center bg-white p-6 shadow-lg rounded-lg w-1/4">
-      <h2 className="text-xl font-bold mb-4">Temperature</h2>
-      <GaugeComponent value={selectedData[0].temperature} maxValue={100} type="radial" />
-      <h1 className="mt-2 font-semibold">Condition: {selectedData[0].condition}</h1>
-    </div>
-  )}
-
-  {/* Humidity Gauge */}
-  {selectedData && selectedData.length > 0 && (
-    <div className="flex flex-col items-center justify-center bg-white p-6 shadow-lg rounded-lg w-1/4">
-      <h2 className="text-xl font-bold mb-4">Humidity</h2>
-      <GaugeComponent value={selectedData[0].humidity} maxValue={100} type="radial" />
-    </div>
-  )}
-</div>
-          
-  </div>{selectedData && selectedData.length > 0 && (<h1 className={className} >Condition:{selectedData[0].condition}</h1>)}
+   
+  </div>
 </div>
 </div>
 

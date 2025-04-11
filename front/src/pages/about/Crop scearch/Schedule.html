@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌾 Crop Spraying Schedules</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: linear-gradient(to bottom right, #f0fff4, #e6f4ea);
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2d6a4f;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h1::after {
+      content: '🌱';
+      display: block;
+      font-size: 2rem;
+      margin-top: 0.5rem;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 1.5rem;
+    }
+
+    input[type="text"] {
+      width: 320px;
+      padding: 0.75rem 1rem;
+      border: 2px solid #a3c9a8;
+      border-radius: 12px;
+      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #40916c;
+    }
+
+    .crop-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .crop {
+      background-color: #ffffff;
+      padding: 1.2rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .crop:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .crop a {
+      text-decoration: none;
+      color: #1b4332;
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Crop Spraying Schedules</h1>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" onkeyup="filterCrops()" placeholder="🔍 Search crop name...">
+  </div>
+
+  <div class="crop-list" id="cropList">
+    <div class="crop"><div class="emoji">🍎</div><a href="pdfs/SPRAYSCHEDULEofAppleEnglish.pdf" target="_blank">Apple</a></div>
+    <div class="crop"><div class="emoji">🥬</div><a href="pdfs/Schedule-Veg-Cabbage_Tomato_Cauliflower.pdf" target="_blank">Cabbage</a></div>
+    <div class="crop"><div class="emoji">🥕</div><a href="https://www.khethari.com/blogs/news/pest-management-in-carrot" target="_blank">Carrot</a></div>
+    <div class="crop"><div class="emoji">🌶️</div><a href="pdfs/Schedule-Chilli.pdf" target="_blank">Chilli</a></div>
+    <div class="crop"><div class="emoji">🥒</div><a href="pdfs/Schedule-Cucumber_Capsicum.pdf" target="_blank">Cucumber</a></div>
+    <div class="crop"><div class="emoji">🍇</div><a href="pdfs/Grapes.pdf" target="_blank">Grapes</a></div>
+    <div class="crop"><div class="emoji">🥜</div><a href="pdfs/Schedule-Veg_Soy_Groundnut.pdf" target="_blank">Groundnut</a></div>
+    <div class="crop"><div class="emoji">🥭</div><a href="pdfs/SprayScheduleofMangoCitrusEnglish.pdf" target="_blank">Mango</a></div>
+    <div class="crop"><div class="emoji">🌼</div><a href="pdfs/Schedule_Mustard_Chick-Peas.pdf" target="_blank">Mustard</a></div>
+    <div class="crop"><div class="emoji">🧅</div><a href="pdfs/Schedule-Onion_Nashik.pdf" target="_blank">Onion</a></div>
+    <div class="crop"><div class="emoji">🥔</div><a href="pdfs/Schedule-Veg_Potato_Peas.pdf" target="_blank">Potato</a></div>
+    <div class="crop"><div class="emoji">🌾</div><a href="pdfs/Bomlife-Rice-schedule" target="_blank">Rice</a></div>
+    <div class="crop"><div class="emoji">🍉</div><a href="pdfs/Schedule-Watermelon.pdf" target="_blank">Watermelon</a></div>
+    <div class="crop"><div class="emoji">🌿</div><a href="pdfs/Schedule_Wheat.pdf" target="_blank">Wheat</a></div>
+    <div class="crop"><div class="emoji">🍐</div><a href="https://www.apnikheti.com/en/pn/agriculture/horticulture/fruit/guava?utm_source=chatgpt.com" target="_blank">Guava</a></div>
+  </div>
+
+  <footer>
+    🌸 Happy Farming! Made with 💚 by AgroMinds
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

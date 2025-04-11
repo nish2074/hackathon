@@ -49,7 +49,7 @@ const handleLogin = async (e) => {
             <input type="password" name="password" placeholder="Password"onChange={handleChange} />
             <button onClick={handleLogin}>Login</button>
             </form>
-            {!success&&<p>Wrong Password</p>}
+            {!success&&<p className="">Please fill correct info</p>}
            
           <span>Don't you have an account?</span>
           <Link to="/register">

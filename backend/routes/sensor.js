@@ -5,6 +5,7 @@ require("dotenv").config();
 const pool = require("../model/db"); // ✅ PostgreSQL connection
 const cron = require("node-cron");
 
+const checkAndNotify = require('../utils/checkandNotify');
 const router = express.Router();
 router.use(express.json());
 router.use(cors());
@@ -28,43 +29,42 @@ const determineCondition = (temperature, humidity) => {
 // 🔹 Fetch & Store Data Every Hour (PostgreSQL)
 const fetchAndStoreSensorData = async () => {
     try {
-        const response = await axios.get(BLYNK_API);console.log("✅ Data stored in PostgreSQL at: ", new Date()); 
-console.log("⚠️ Data already exists for this hour. Skipping storage..."); 
-console.log("⏳ Running scheduled sensor data fetch..."); 
-console.log("✅ Data stored in PostgreSQL at: ", new Date());
-        const temperature = response.data.v2;
-        const humidity = response.data.v1;
-        const condition = determineCondition(temperature, humidity);
-
-        const currentHour = new Date();
-        currentHour.setMinutes(0, 0, 0); // Round to the full hour
-
-        // ✅ Check if data already exists in the past hour
-        const checkQuery = `
-            SELECT id FROM sensor_tables
-            WHERE timestamp >= NOW() - INTERVAL '1 hour' 
-            LIMIT 1;
-        `;
-        const { rows } = await pool.query(checkQuery);
-
-        if (rows.length > 0) {
-            console.log("⚠️ Data already exists for this hour. Skipping storage...");
-            return;
-        }
-
-        // ✅ Save to PostgreSQL
-        const insertQuery = `
-            INSERT INTO sensor_tables (temperature, humidity, condition, timestamp)
-            VALUES ($1, $2, $3, NOW());
-        `;
-        await pool.query(insertQuery, [temperature, humidity, condition]);
-
-        console.log(`✅ Data stored in PostgreSQL at: ${currentHour}`);
+      const response = await axios.get(BLYNK_API);
+      const temperature = response.data.v2;
+      const humidity = response.data.v1;
+      const condition = determineCondition(temperature, humidity);
+  
+      const currentHour = new Date();
+      currentHour.setMinutes(0, 0, 0);
+  
+      const checkQuery = `
+        SELECT id FROM sensor_tables
+        WHERE timestamp >= NOW() - INTERVAL '1 hour' 
+        LIMIT 1;
+      `;
+      const { rows } = await pool.query(checkQuery);
+  
+      if (rows.length > 0) {
+        console.log("⚠️ Data already exists for this hour. Skipping storage...");
+        return;
+      }
+  
+      // Save data
+      const insertQuery = `
+        INSERT INTO sensor_tables (temperature, humidity, condition, timestamp)
+        VALUES ($1, $2, $3, NOW());
+      `;
+      await pool.query(insertQuery, [temperature, humidity, condition]);
+  
+      // ✅ Send alert if condition is non-ideal
+      await checkAndNotify(temperature, humidity);
+  
+      console.log(`✅ Data stored in PostgreSQL at: ${currentHour}`);
     } catch (error) {
-        console.error("❌ Error fetching or storing data:", error);
+      console.error("❌ Error fetching or storing data:", error);
     }
-};
-
+  };
+  
 // 🔹 Cron Job: Runs Every Hour
 cron.schedule("0 * * * *", async () => {
     console.log("⏳ Running scheduled sensor data fetch...");
@@ -80,6 +80,7 @@ router.get("/get-hourly-data", async (req, res) => {
       ORDER BY timestamp ASC;
     `;
     const { rows } = await pool.query(query, [hour]);
+    
     res.json(rows);
   } catch (err) {
     console.error("❌ Error in /get-hourly-data route:", err.message);

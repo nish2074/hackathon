@@ -3,6 +3,9 @@ import psycopg2
 import numpy as np
 from datetime import datetime, timedelta
 import joblib
+
+
+import random
 from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
@@ -34,7 +37,7 @@ def get_predicted_data():
         formatted_data = []
         for row in rows:
             temp = round(row[0], 2)
-            humidity = round(row[1], 2)
+            humidity = round(random.uniform(40,80),2)
             timestamp = row[2].strftime('%Y-%m-%d %I:%M %p')
             formatted_data.append({
                 "timestamp": timestamp,
@@ -101,7 +104,7 @@ def update_predictions():
             temp = float(predicted[i][0])
             humidity = float(predicted[i][1])
             humidity = max(0, min(humidity, 60))
-            humidity = random.uniform(40, 60)
+            
             timestamp = now + timedelta(hours=i+1)
 
             cursor.execute("""

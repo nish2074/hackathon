@@ -12,7 +12,7 @@ const router = express.Router();
 // 🟢 REGISTER ROUTE
 router.post("/register", async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password,phonenumber } = req.body;
 
         // Check if user exists
         const existingUser = await User.findOne({ userName: username });
@@ -23,7 +23,8 @@ router.post("/register", async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt);
 
         // Save new user
-        const newUser = new User({ userName: username, email, password: hashedPassword });
+        const newUser = new User({ userName: username, email, password: hashedPassword,phonenumber:phonenumber });
+       
         await newUser.save();
         const result = newUser.toObject();
         const token = Jwt.sign({ result }, Jwtkey, { expiresIn: "6h" });
@@ -38,40 +39,31 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { username, password } = req.body;
+
         if (!username || !password) {
             return res.status(400).json({ error: "Username and password are required" });
         }
-
-        // Find user
+        console.log("Login request body:", req.body);
         const user = await User.findOne({ userName: username });
+
         if (!user) {
-            console.log("User not found:", username);
+            console.log("❌ User not found:", username);
             return res.status(400).json({ error: "Invalid username or password" });
         }
-        // Validate password
+
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
+            console.log("❌ Invalid password for:", username);
             return res.status(400).json({ error: "Invalid username or password" });
         }
+
         const token = Jwt.sign({ user }, Jwtkey, { expiresIn: "6h" });
-        res.status(200).json({ message: "Login successful", username: user.userName, auth: token }); // Send response only once
 
-
-        console.log("Stored hashed password:", user.password);
-        console.log("Entered password:", password);
-
-        // Validate password
-        // Validate password
-
-
-        if (!validPassword) {
-            return res.status(400).json({ error: "Invalid username or password" });
-        }
-
-        // Generate JWT token
-      
-        
-        
+        res.status(200).json({
+            message: "Login successful",
+            username: user.userName,
+            auth: token
+        });
 
     } catch (err) {
         console.error("🔥 Error in /login:", err);

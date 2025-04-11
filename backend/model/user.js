@@ -5,6 +5,10 @@ const User = new mongoose.Schema({
     password: String,
     email: String,
     
+    phonenumber: {
+        type: String,
+        required: true,
+      },
     timestamp: { type: Date, default: Date.now }
 });
 

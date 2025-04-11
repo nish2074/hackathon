@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { FaBars, FaSearch, FaHome, FaBell, FaUserCircle, FaCogs, FaChartLine } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext} from "../../pages/context/authcontext";
 import logo from './logo/LOGO.png';
 
@@ -10,9 +10,13 @@ const Navbar = () => {
     const handleClick = () => {
         setShow((prev) => !prev);
     };
-
-    const { logout } = useContext(AuthContext); // Add this line
-
+    
+    const { logout } = useContext(AuthContext);
+    const navigate=useNavigate()
+    const handlelogout = () => {logout;
+        navigate("/login")
+    // Add this line
+    }
     return (
         <div className="flex">
             {/* Sidebar */}
@@ -24,42 +28,31 @@ const Navbar = () => {
                         </div>
                         <hr />
                         <ul className="mt-4 text-white font-bold space-y-2">
-                            <li className="hover:bg-blue-500 py-2 rounded">
+                            <li className="hover:bg-blue-500 py-4 rounded">
                                 <NavLink to="/" className="flex items-center px-4 text-lg">
                                     <FaHome className="h-5 w-5 mr-2" />
                                     Home
                                 </NavLink>
                             </li>
-                            <li className="hover:bg-blue-500 py-2 rounded">
+                            <li className="hover:bg-blue-500 py-4 rounded">
                                 <NavLink to="/searchData" className="flex items-center px-4 text-lg">
                                     <FaCogs className="h-5 w-5 mr-2" />
                                     predict
                                 </NavLink>
                             </li>
-                            <li className="hover:bg-blue-500 py-2 rounded">
+                            <li className="hover:bg-blue-500 py-4 rounded">
                                 <NavLink to="/about" className="flex items-center px-4 text-lg">
                                     <FaCogs className="h-5 w-5 mr-2" />
-                                    About
+                                   Spraying Schedule
                                 </NavLink>
                             </li>
-                            <li className="hover:bg-blue-500 py-2 rounded">
+                            <li className="hover:bg-blue-500 py-4 rounded">
                                 <NavLink to="/predict" className="flex items-center px-4 text-lg">
                                     <FaChartLine className="h-5 w-5 mr-2" />
                                   Search
                                 </NavLink>
                             </li>
-                            <li className="hover:bg-blue-500 py-2 rounded">
-                                <NavLink to="/tact" className="flex items-center px-4 text-lg">
-                                    <FaCogs className="h-5 w-5 mr-2" />
-                                    Tact
-                                </NavLink>
-                            </li>
-                            <li className="hover:bg-blue-500 py-2 rounded">
-                                <NavLink to="/profile" className="flex items-center px-4 text-lg">
-                                    <FaCogs className="h-5 w-5 mr-2" />
-                                   Profile
-                                </NavLink>
-                            </li>
+                          
                         </ul>
                     </div>
                 )}
@@ -94,10 +87,15 @@ const Navbar = () => {
                     <FaUserCircle className="text-white text-3xl cursor-pointer" /> 
                  
                     {currentUser && ( 
-                        <button onClick={logout} className="text-white cursor-pointer bg-red-600 p-2 m-2 rounded-2xl">logout</button>
+                        <button onClick={handlelogout} className="text-white cursor-pointer bg-red-600 p-2 m-2 rounded-2xl">logout</button>
 
                     )}
-                   
+                {currentUser==null&&(<li className="hover:bg-blue-500 py-2 rounded">
+                                <NavLink to="/login" className="flex items-center px-4 text-lg">
+                                    <FaCogs className="h-5 w-5 mr-2" />
+                                  
+                                </NavLink>
+                            </li>)}
 
                     <p className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-3xl">{currentUser.username?currentUser.username:"Guest"}</p>
                 </div>
