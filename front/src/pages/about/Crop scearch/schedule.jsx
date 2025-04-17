@@ -64,7 +64,7 @@ const Schedule = () => {
     { emoji: "🥔", name: "Potato", link: "../register/register10.jsx" },
     { emoji: "🌾", name: "Rice", link: "/pdfs/Bomlife-Rice-schedule" },
     { emoji: "🍉", name: "Watermelon", link: "/pdfs/Schedule-Watermelon.pdf" },
-    { emoji: "🌿", name: "Wheat", link: "/pdfs/Schedule_Wheat.pdf" },
+ 
     { emoji: "🍐", name: "Guava", link: "/pdfs/Guava_Spray_Schedule.pdf" },
     { emoji: "🌿", name: "Wheat", link: "/pdfs/Schedule_Wheat.pdf" },
     { emoji: "🍅", name: "Tomato", link: "../register/register2.jsx" },
@@ -84,7 +84,7 @@ const Schedule = () => {
         {/* Dashboard (Full Width) */}
         <div className="w-full"><Dashboard/></div>
         
-      <h1 className="text-6xl font-bold text-yellow-400 text-center mb-4">
+      <h1 className="text-6xl font-bold text-black text-center mb-4">
         Crop Spraying Schedules <span className="block text-3xl mt-1">🌱</span>
       </h1>
 
@@ -142,7 +142,7 @@ const Schedule = () => {
         ))}
       </div>
 
-      <footer className="text-center text-yellow-500 text-4xl mt-10">
+      <footer className="text-center text-black text-4xl mt-10">
         🌸 Happy Farming! Made with 💚 by AgroMinds
       </footer>
     </div>

@@ -37,7 +37,7 @@ const CabbageSpraySchedule = () => {
     <div
       className="min-h-screen flex justify-center bg-fixed bg-cover bg-center px-4"
       style={{
-        backgroundImage: "url('https://example.com/cabbage-field.jpg')"
+        backgroundImage: "url('https://media.istockphoto.com/id/1189223466/photo/cabbage-grow-in-the-field.jpg?s=612x612&w=0&k=20&c=dDqohUgpw93kQ6JnlctRh8pgs4f4sz1T2i0YBIcuRjk=')"
       }}
     >
       <div className="bg-white/60 shadow-xl mt-24 mb-20 rounded-4xl p-4 max-w-2xl w-full backdrop-blur-md">

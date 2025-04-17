@@ -52,6 +52,12 @@ const Navbar = () => {
                                   Search
                                 </NavLink>
                             </li>
+                            <li className="hover:bg-blue-500 py-4 rounded">
+                                <NavLink to="/profile" className="flex items-center px-4 text-lg">
+                                    <FaChartLine className="h-5 w-5 mr-2" />
+                                  Plant Diesease
+                                </NavLink>
+                            </li>
                           
                         </ul>
                     </div>

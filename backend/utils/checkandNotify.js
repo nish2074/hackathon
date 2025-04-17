@@ -12,7 +12,8 @@ const isMarginal=temperature >= 5 && temperature <= 40 && humidity >= 20 && humi
 const isIdeal=  temperature >= 10 && temperature <= 30 && humidity >= 30 && humidity <= 60 ||
 temperature >= 15 && temperature <= 40 && humidity >= 60 && humidity <= 80
   if (isNonIdeal) {
-    const message = `⚠️ Alert: Temp: ${temperature}°C, Humidity: ${humidity}% — Non-ideal conditions detected!`;
+    const message = `⚠️ Alert: Temp: ${temperature}°C, Humidity: ${humidity}% — Non-ideal conditions detected!
+    Weather does not support effective or safe spraying today`;
 
  
     const phoneNumber = "+919604886245";
@@ -20,7 +21,8 @@ temperature >= 15 && temperature <= 40 && humidity >= 60 && humidity <= 80
     console.log("📨 SMS sent to: ${phoneNumber}");
   }
   if (isIdeal) {
-    const message =` ⚠️ Alert: Temp: ${temperature}°C, Humidity: ${humidity}% — Non-ideal conditions detected!`;
+    const message =`  Alert: Temp: ${temperature}C, Humidity: ${humidity}% — Non-ideal conditions detected!
+    The environment is perfectly suited for spraying today.`;
 
     const phoneNumber = "+919604886245";
     await sendsms(phoneNumber, message);
@@ -30,7 +32,8 @@ temperature >= 15 && temperature <= 40 && humidity >= 60 && humidity <= 80
   if (isMarginal) {
 
     const phoneNumber = "+919604886245";
-    const message =`⚠️ Alert: Temp: ${temperature}°C, Humidity: ${humidity}% — Marginal conditions detected!`;
+    const message =` Alert: Temp: ${temperature}C, Humidity: ${humidity}% — Marginal conditions detected!
+    Spraying may proceed with caution under suboptimal conditions`;
     await sendsms(phoneNumber, message);
     console.log("SMS sent to: ${phoneNumber}");
   }

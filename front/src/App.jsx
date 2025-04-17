@@ -1,6 +1,7 @@
 import React ,{useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/home";
+import Routep from "../src/pages/plantdieseaseroute/route.jsx"
 import About from "./pages/about/about";
 import Schedule from "./pages/about/Crop scearch/schedule.jsx"
 import Login from "./pages/login/login";
@@ -59,7 +60,7 @@ const App = () => {
             <Route path="/predict" element={<Predict onHourSelect={handleHourSelect} />} />
             <Route path="/tact" element={<Tact />} />
             <Route path="/searchData" element={<Search/>} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Routep />} />
           </Routes>
         </div>
       </div>

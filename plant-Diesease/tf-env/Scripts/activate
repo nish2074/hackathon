@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\nish2\OneDrive\Desktop\CODE\projects\csmit\backend\routes\tf-env"
+VIRTUAL_ENV="C:\Users\nish2\OneDrive\Desktop\CODE\projects\csmit\plant-Diesease\tf-env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

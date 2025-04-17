@@ -37,7 +37,7 @@ const Register = () => {
     <div
     className="min-h-screen mt-2 flex justify-center bg-cover bg-center px-4"
     style={{
-      backgroundImage: "url('https://sdmntpritalynorth.oaiusercontent.com/files/00000000-0b8c-6246-aaaa-6fc738aeb3aa/raw?se=2025-04-11T15%3A06%3A36Z&sp=r&sv=2024-08-04&sr=b&scid=e8ec303e-21bd-567b-bc3b-c826a8d82eed&skoid=a3336399-497e-45e5-8f28-4b88ecca3d1f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-11T00%3A28%3A56Z&ske=2025-04-12T00%3A28%3A56Z&sks=b&skv=2024-08-04&sig=TywgPiHERd9xJPnTfSV4RpgWcBwNK8dECvtgXC0Xdbo%3D')"
+      backgroundImage: "url('https://i.ytimg.com/vi/qXdw-hBiu1A/maxresdefault.jpg')"
     }}
   >
     <div className="bg-white/60 shadow-xl mt-24 mb-20 rounded-2xl p-4 max-w-2xl w-full backdrop-blur-md">
