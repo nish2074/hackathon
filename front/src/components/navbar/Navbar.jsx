@@ -103,7 +103,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>)}
 
-                    <p className="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-3xl">{currentUser.username?currentUser.username:"Guest"}</p>
+                
                 </div>
             </nav>
         </div>
