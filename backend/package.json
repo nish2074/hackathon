@@ -19,6 +19,7 @@
   "homepage": "https://github.com/your-username/agrominds-backend#readme",
   "description": "",
   "dependencies": {
+    "@vonage/server-sdk": "^3.22.4",
     "axios": "^1.11.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
