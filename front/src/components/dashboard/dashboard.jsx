@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../navbar/navbar";
+import Navbar from "../navbar/Navbar";
 
 const dashboard=()=>{
     return(<div className="w-full"><Navbar/>
